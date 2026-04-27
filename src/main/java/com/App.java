@@ -4,14 +4,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class App {
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    List<WiseSaying> wiseSayings = new ArrayList<>();
-    int lastId = 0;
+    private List<WiseSaying> wiseSayings = new ArrayList<>();
+    private int lastId = 0;
 
-    void run() {
+    public void run() {
         System.out.println("== 명언 앱 ==");
 
         while (true) {
@@ -34,7 +33,7 @@ public class App {
         scanner.close();
     }
 
-    void actionWrite() {
+   public void actionWrite() {
         System.out.println("명언 :");
         String content = scanner.nextLine().trim();
         System.out.println("작가 :");
@@ -45,7 +44,7 @@ public class App {
         System.out.println("%d번 명언이 등록 되었습니다.".formatted(wiseSaying.id));
     }
 
-    void actionDelete(String cmd) {
+    public void actionDelete(String cmd) {
         if (!cmd.contains("?")) {
             System.out.println("삭제 번호를 정확히 입력해주세요.");
             return;
@@ -69,7 +68,7 @@ public class App {
             System.out.println("%d번 명언은 존재하지 않습니다\n".formatted(id));
         }
     }
-    void actionModify (String cmd) {
+    public void actionModify (String cmd) {
         if (!cmd.contains("?")) {
             System.out.println("수정 번호를 정확히 입력해주세요.");
             return;
@@ -107,7 +106,7 @@ public class App {
     }
 
 
-    WiseSaying write(String content, String author) {
+    public WiseSaying write(String content, String author) {
         WiseSaying wiseSaying = new WiseSaying();
         wiseSaying.id = ++lastId;
         wiseSaying.content = content;
@@ -118,7 +117,7 @@ public class App {
         return wiseSaying;
     }
 
-    void actionList() {
+    public void actionList() {
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
 
