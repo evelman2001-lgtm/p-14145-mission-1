@@ -1,12 +1,38 @@
 package com.domain.wiseSaying.service;
 
+import com.AppContext;
 import com.WiseSaying;
+import com.domain.wiseSaying.repository.WiseSayingRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
-    private int lastId = 0;
-    public List<WiseSaying> wiseSayings = new ArrayList<>();
+    private final WiseSayingRepository wiseSayingRepository = AppContext.wiseSayingRepository;
 
+    public List<WiseSaying> findForList() {
+        return wiseSayingRepository.findForList();
+    }
+
+    public WiseSaying write(String content, String author) {
+        WiseSaying wiseSaying = new WiseSaying(content, author);
+
+        wiseSayingRepository.save(wiseSaying);
+
+        return wiseSaying;
+    }
+
+    public WiseSaying findById(int id) {
+        return wiseSayingRepository.findById(id);
+    }
+
+    public void modify(WiseSaying wiseSaying, String content, String author) {
+        wiseSaying.setContent(content);
+        wiseSaying.setAuthor(author);
+
+        wiseSayingRepository.save(wiseSaying);
+    }
+
+    public boolean delete(int id) {
+        return wiseSayingRepository.deleteById(id);
+    }
 }
