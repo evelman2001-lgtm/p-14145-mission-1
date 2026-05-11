@@ -34,9 +34,5 @@ private String author;
     this.content = content;
     this.author = author;
 }
-
-    public WiseSaying() {
-
-    }
 }
  
